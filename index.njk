@@ -4,11 +4,153 @@ eleventyNavigation:
   key: Home
   order: 1
 ---
-{% set maxPosts = collections.posts.length | min(3) %}
-<h1>Latest {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h1>
+<div class="container section--hero page-section content-width">
+  <div class="row align-items-center justify-content-md-center">
+    <div id="section-home" class="col col-12 col-md-6">
+      <h1 class="display-6">Hello, I am Garth Henson</h1>
+      <p class="lead">
+        I am a Technology Leader, Speaker, Cloud Architect, and Software
+        Engineer with over 15 years experience working at enterprise scale. 
+        Mentoring, Networking, and Problem Solving are my jam!
+      </p>
+    </div>
+    <div class="col col-md-6 d-none d-md-block">
+      <div class="r-img">
+        <img src="img/main-splash.jpg" class="image-placement" />
+      </div> 
+    </div>
+  </div>
+</div>
 
-{% set postslist = collections.posts | head(-3) %}
-{% set postslistCounter = collections.posts | length %}
-{% include "postslist.njk" %}
+<div class="container section--cards page-section content-width">
+  <div class="section-header">
+    <div class="row justify-content-between border-bottom">
+      <div class="col-auto me-auto">
+        <h1 class="h5">A Quick Glance</h1>
+      </div>
+    </div>
+  </div>
+  <div class="project-card-list">
+    <div class="project-card half card-left fill-guahan">
+      <div class="project-content">
+        <h5 class="project-title">What is <em>Guahan</em>?</h5>
+        <p>The island of Guam is referred to as <em>Guahan</em> in the Chamorro
+        language. <em>Guahan</em> literally means <i>a place that has</i> or a place
+        of resources.</p>
+        <p>Having grown up on Guam, this definition has special significance to
+        me and is a very fitting label considering the variety of interests and
+        skills I have been blessed to develop through the years.</p>
+      </div>
+      <img src="img/project-card-beach.jpg" class="project-image half" />
+    </div>
+    <div class="project-card half card-right fill-technology">
+        <h5 class="project-title">What I Do</h5>
+        <p>The <strong>Web</strong> in <i>Guahan Web</i> is a bit too narrow, but it
+        accurately represents where I started and the broad core of my competencies.
+        In a nutshell, here are my primary roles:</p>
+        <ul>
+          <li><b>Manager:</b> build and lead teams of technologists</li>
+          <li><b>Engineer:</b> cloud and application architecture at scale</li>
+          <li><b>Speaker:</b> university, career, and technology events</li>
+          <li><b>Mentor:</b> coaching on a personal and professional level</li>
+          <li><b>Advisor:</b> Computer Science programs and corporate startups</li>
+        </ul>
+    </div>
+  </div>
+</div>
 
-<p>More posts can be found in <a href="{{ '/posts/' | url }}">the archive</a>.</p>
+<div class="container section--work page-section content-width">
+  <div class="section-header">
+    <div class="row justify-content-between border-bottom">
+      <div class="col-auto me-auto">
+        <h1 class="h5">About</h1>
+      </div>
+      <div class="col-auto">
+        <a href="https://linkedin.com/in/garthhenson" target="_blank" class="text-decoration-none "><small>View LinkedIn</small></a>
+      </div>
+    </div>
+  </div>
+  <div class="section-content mt-4">
+    <div class="row">
+      <div class="col-sm-6 mb-3">
+        <h6 class="text-muted">Who Am I?</h6>
+        <p>My professional career began in 2004. Since then, I have
+        had the opportunity to establish myself as a technical leader in
+        the digital entertainment and software industry, working with
+        major companies and learning how to solve complex architectural
+        challenges at massive scale.</p>
+        <p>Mentoring, teaching, and training have always been passions
+        of mine, and I have had the privilege of speaking at numerous
+        events - both across the United States and internationally. I
+        also actively engage with several university Computer Science
+        programs annually.</p>
+        <p>In recent years, I have shifted more into technical leadership
+        roles, helping build and guide teams of technologists as well as
+        serving in an advisory role for some startup organizations.</p>
+      </div>
+      <div class="col-sm-6">
+        <h6 class="text-muted">Work History</h6>
+        <div class="work-history mb-3">
+          <div class="work-time">2022-Present</div>
+          <div class="work-location">
+            <span>Lucasfilm</span>
+            <span class="ms-2 text-muted">(Remote) San Francisco, California</span>
+          </div>
+          <div class="work-title">
+            <span>Senior Software Engineer, Backend</span>
+          </div>
+        </div>
+        <div class="work-history mb-3">
+          <div class="work-time">2020-2022</div>
+          <div class="work-location">
+            <span>Microsoft</span>
+            <span class="ms-2 text-muted">(Remote) Redmond, Washington</span>
+          </div>
+          <div class="work-title">
+            <span>Senior Software Engineer</span>
+          </div>
+        </div>
+        <div class="work-history mb-3">
+          <div class="work-time">2014-2020</div>
+          <div class="work-location">
+            <span>The Walt Disney Company</span>
+            <span class="ms-2 text-muted">Seattle, Washington</span>
+          </div>
+          <div class="work-title">
+            <span>Staff Software Engineer</span>
+          </div>
+        </div>
+        <div class="work-history mb-3">
+          <div class="work-time">2010-2014</div>
+          <div class="work-location">
+            <span>Amazon</span>
+            <span class="ms-2 text-muted">Seattle, Washington</span>
+          </div>
+          <div class="work-title">
+            <span>Web Development Engineer</span>
+          </div>
+        </div>
+        <div class="work-history mb-3">
+          <div class="work-time">2007-2010</div>
+          <div class="work-location">
+            <span>Synacor</span>
+            <span class="ms-2 text-muted">Buffalo, New York</span>
+          </div>
+          <div class="work-title">
+            <span>Senior Software Engineer</span>
+          </div>
+        </div>
+        <div class="work-history mb-3">
+          <div class="work-time">2004-2007</div>
+          <div class="work-location">
+            <span>Bob Jones University</span>
+            <span class="ms-2 text-muted">Greenville, South Carolina</span>
+          </div>
+          <div class="work-title">
+            <span>Web Development Engineer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

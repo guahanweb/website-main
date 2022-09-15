@@ -1,0 +1,46 @@
+---
+layout: layouts/home.njk
+eleventyNavigation:
+  key: Speaking
+  order: 2
+---
+
+<div class="container section--events page-section content-width">
+  <div class="row">
+    <div class="col-md-6 col-lg-7 me-auto">
+      <h1 class="display-6">Some Topics</h1>
+      {% for item in speaking.talks %}
+        <div class="talk-details">
+          <h5>{{ item.name }}</h5>
+          <p>{{ item.description }}</p>
+          <div class="tags">
+            {% for tag in item.tags %}
+              <span class="tag">{{ tag }}</span>
+            {% else %}
+              <span class="no-tags">no tags</span>
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <div class="no-records">empty record set</div>
+      {% endfor %}
+    </div>
+    <div class="col-md-5 col-lg-4">
+      <h4>Speaking Engagements</h4>
+      {% for item in speaking.engagements %}
+        <div class="engagement">
+          <h6><a href="{{ item.url }}" target="_blank">{{ item.name }}</a>{% if item.keynote %}<small class="keynote">keynote</small>{% endif %}</h6>
+          <p class="details">
+            <small>
+              <span class="date text-muted">{{ item.date }}</span>
+              |
+              <span class="location"><b>{{ item.location }}</b></span>
+            </small>
+          </p>
+        </div>
+      {% else %}
+        <div class="no-records">empty record set</div>
+      {% endfor %}
+      </div>
+    </div>
+</div>
