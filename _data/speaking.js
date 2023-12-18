@@ -9,13 +9,13 @@ const talks = {
         name: 'Automated Email Testing with Postfix and Docker',
         description: 'Join us to explore and build a full round-trip, automated email testing system that runs entirely in ephemeral environments',
         tags: ['automation', 'qa', 'docker', 'testing'],
-        sort: 5,
+        sort: 2,
     },
     cs101: {
         name: 'Engineering Student Tech Talk',
         description: 'A high level career discussion giving insight into tech evaluation, networking, interviewing, and finding that first job',
         tags: ['mentoring', 'tech talk', 'career'],
-        sort: 6,
+        sort: 7,
     },
     serverless101: {
         name: 'Where Have All My Servers Gone?',
@@ -27,7 +27,7 @@ const talks = {
         name: 'Learning to Ask the Right Questions',
         description: 'Often, it is more important to know the right questions to ask than to have the right answer - as those questions lead to the answers',
         tags: ['soft skills', 'leadership', 'career'],
-        sort: 4,
+        sort: 5,
     },
     jsadoption: {
         name: 'JavaScript: A History of Enterprise Adoption and Usage',
@@ -39,13 +39,19 @@ const talks = {
         name: 'Real Time Data With Node.js and Redis',
         description: 'Enterprise data moves at the speed of light, so let\'s explore how to analyze and evaluate that data as it happens',
         tags: ['js', 'data', 'architecture'],
-        sort: 2,
+        sort: 3,
     },
     tellingstories: {
         name: 'Telling Stories With Big Data',
         description: 'Access to massive volumes of data is at our fingertips, but it isn\'t always clear how to tell a story that is both accurate and relevant with it',
         tags: ['data', 'architecture'],
-        sort: 1,
+        sort: 3,
+    },
+    apigating: {
+        name: 'Gating Your APIs Without Lifting a Server',
+        description: 'When building APIs, security cannot be an afterthought. Let\'s examine a technique to gate endpoints with configurable OAuth using serverless methodologies.',
+        tags: ['security', 'apis', 'architecture'],
+        sort: 1
     }
 };
 
@@ -176,6 +182,13 @@ const eventList = [
         date: '2022-11-02',
         talks: [talks.tellingstories],
         extended: true,
+    },
+    {
+        name: 'iJS New York',
+        url: 'https://javascript-conference.com/new-york/',
+        location: 'New York, NY',
+        date: '2023-09-25',
+        talks: [talks.emailtesting, talks.apigating]
     }
 ];
 

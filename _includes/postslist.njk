@@ -1,12 +1,28 @@
-<ol reversed class="postlist" style="counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }}">
+<section reversed class="postlist" style="counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }}">
 {% for post in postslist | reverse %}
-  <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-    <a href="{{ post.url | url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-    <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-    {% for tag in post.data.tags | filterTagList %}
-      {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-      <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
-    {% endfor %}
-  </li>
+  <article class="postlist-item{% if post.url == url %}" postlist-item-active{% endif %}">
+    <h1 class="postlist-title">
+      <a href="{{ post.url | url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+      <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+    </h1>
+    {% if post.data.hero %}
+      <div class="postlist-hero">
+        {% image post.data.hero.img, post.data.hero.alt, "hero" %}
+        <eleventy-image src={{ post.data.hero.img }} alt={{ post.data.hero.alt }}></eleventy-image>
+        {# <img webc:is="eleventy-image" src="{{ post.data.hero.img }}" alt="{{ post.data.hero.alt }}"> #}
+      </div>
+    {% endif %}
+    <div class="postlist-excerpt">
+      {% excerpt post %}
+    </div>
+    {% if post.data.tags.length %}
+    <div class="postlist-tags">
+      {% for tag in post.data.tags | filterTagList %}
+        {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+        <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </article>
 {% endfor %}
-</ol>
+</section>

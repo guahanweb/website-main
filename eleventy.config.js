@@ -8,10 +8,18 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 
+const eleventyWebcPlugin = require("@11ty/eleventy-plugin-webc");
+const Image = require("@11ty/eleventy-img");
+
+const eleventyImageConfig = require('./eleventy.image.config');
+
 module.exports = function(eleventyConfig) {
   // Copy the `img` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("img");
   // eleventyConfig.addPassthroughCopy("css");
+
+  // Image configuration
+  eleventyImageConfig(eleventyConfig);
 
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
@@ -59,6 +67,17 @@ module.exports = function(eleventyConfig) {
 
     return filterTagList([...tagSet]);
   });
+
+  // Creat excerpt shortcode
+  eleventyConfig.addShortcode('excerpt', post => extractExceprt(post));
+  function extractExceprt(post) {
+    if (!post.templateContent) return '';
+    if (post.templateContent.indexOf('</p>') > 0) {
+      let end = post.templateContent.indexOf('</p>');
+      return post.templateContent.substr(0, end + 4);
+    }
+    return post.templateContent;
+  }
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
