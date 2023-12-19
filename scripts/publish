@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+export DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+export PROJECT_ROOT=$( dirname "${DIR}" )
+
+# can override these with env variables
+export OUTPUT_DIR=${OUTPUT_DIR:-_site}
+export PUBLISH_USERNAME=${PUBLISH_USERNAME:-guahan}
+export PUBLISH_DOMAIN=${PUBLISH_DOMAIN:-guahanweb.com}
+export PUBLISH_SERVER_PATH=${PUBLISH_SERVER_PATH:-"/home/guahan/guahanweb.com/"}
+
+function clean_build() {
+    cd ${PROJECT_ROOT}
+    npm run clean
+    npm run build
+}
+
+function publish() {
+    cd ${PROJECT_ROOT}
+    cd ${OUTPUT_DIR}
+    scp -r "./*" ${PUBLISH_USERNAME}@${PUBLISH_DOMAIN}:${PUBLISH_SERVER_PATH}
+}
+
+echo "building a fresh copy..."
+clean_build > /dev/null 2>&1
+echo "copying content to your server..."
+publish
+echo "done"
