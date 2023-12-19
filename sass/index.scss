@@ -70,7 +70,7 @@ p:last-child {
 p,
 .tmpl-post li,
 img {
-  max-width: 37.5em; /* 600px /16 */
+  max-width: 45em; /* 600px /16 */
 }
 p,
 .tmpl-post li {
@@ -178,13 +178,8 @@ code {
   line-height: 1.8;
   counter-increment: start-from -1;
   margin-bottom: 2.875em;
-  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-
-  p {
-    max-width: none;
-  }
 
   & > .postlist-title {
     &:before {
@@ -209,6 +204,14 @@ code {
 }
 .postlist-date {
   word-spacing: -0.5px;
+}
+.postlist-hero, .post-hero {
+  img {
+    border: 1px solid var(--color-gray-40);
+    margin-top: 1em;
+    margin-bottom: 1em;
+    box-shadow: 4px 4px 5px 2px rgba(0, 0, 0, 0.12);
+  }
 }
 .postlist-link {
   padding-left: .25em;

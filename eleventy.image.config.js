@@ -64,7 +64,7 @@ module.exports = function(eleventyConfig) {
         loading="lazy"
         decoding="async"
         src="${ metadata[sizeIndex].webp[0].url }"
-</picture>`
+<\/picture>`
 
         return imageHTML;
     });

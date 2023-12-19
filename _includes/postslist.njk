@@ -8,8 +8,6 @@
     {% if post.data.hero %}
       <div class="postlist-hero">
         {% image post.data.hero.img, post.data.hero.alt, "hero" %}
-        <eleventy-image src={{ post.data.hero.img }} alt={{ post.data.hero.alt }}></eleventy-image>
-        {# <img webc:is="eleventy-image" src="{{ post.data.hero.img }}" alt="{{ post.data.hero.alt }}"> #}
       </div>
     {% endif %}
     <div class="postlist-excerpt">
