@@ -95,8 +95,8 @@ module.exports = function(eleventyConfig) {
     const min = dt.getUTCMinutes().toString().padStart(2, '0');
     const offset = dt.getTimezoneOffset() / 60;
 
-    let output = [year, month, day].join('-') + 'T' + [hour, min].join(':');
-    output += ('-' + offset.toString().padStart(2, '0') + ':00');
+    let output = [year, month, day].join('-') + 'T' + [hour, min, '00'].join(':');
+    output += ('-' + offset.toString().padStart(2, '0') + '00');
 
     return output;
   });
