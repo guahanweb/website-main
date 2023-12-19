@@ -4,7 +4,7 @@ description: As technology grows ever more rapidly, the importance of identifyin
 date: 2023-12-18
 tags:
   - storytelling
-  - technology
+  - innovation
 layout: layouts/post.njk
 hero:
   img: img/posts/brass-quill-pen-8XddFc6NkBY.jpg

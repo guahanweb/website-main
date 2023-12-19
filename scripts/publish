@@ -18,7 +18,7 @@ function clean_build() {
 function publish() {
     cd ${PROJECT_ROOT}
     cd ${OUTPUT_DIR}
-    scp -r "./*" ${PUBLISH_USERNAME}@${PUBLISH_DOMAIN}:${PUBLISH_SERVER_PATH}
+    scp -r ./* ${PUBLISH_USERNAME}@${PUBLISH_DOMAIN}:${PUBLISH_SERVER_PATH}
 }
 
 echo "building a fresh copy..."
