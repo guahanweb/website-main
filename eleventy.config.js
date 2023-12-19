@@ -68,13 +68,23 @@ module.exports = function(eleventyConfig) {
     return filterTagList([...tagSet]);
   });
 
-  // Creat excerpt shortcode
+  // Create marker for end-of-summary
+  const END_SUMMARY_MARKER = "<!-- !!! END SUMMARY MARKER !!! -->";
+  eleventyConfig.addShortcode('endsummary', post => END_SUMMARY_MARKER);
+
+  // Create excerpt shortcode
   eleventyConfig.addShortcode('excerpt', post => extractExceprt(post));
   function extractExceprt(post) {
     if (!post.templateContent) return '';
-    if (post.templateContent.indexOf('</p>') > 0) {
-      let end = post.templateContent.indexOf('</p>');
-      return post.templateContent.substr(0, end + 4);
+
+    let end = post.templateContent.indexOf(END_SUMMARY_MARKER);
+    if (end > -1) {
+      return post.templateContent.substr(0, end);
+    } else {
+      end = post.templateContent.indexOf('</p>');
+      if (end > -1) {
+        return post.templateContent.substr(0, end + 4);
+      }
     }
     return post.templateContent;
   }
