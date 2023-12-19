@@ -18,7 +18,7 @@
 
     {# This section is for share cards #}
     {% set imageUrl = "/img/project-card-beach.jpg" %}
-    {% if renderData.hero and renderData.hero.img %}
+    {% if hero and hero.img %}
         {% set imageUrl = renderData.hero.img %}
     {% elif renderData.image %}
         {% set imageUrl = renderData.image %}
@@ -29,7 +29,15 @@
     <meta property="og:url" content="{{ page.url | escape }}" />
     <meta property="og:description" content="{{ description or renderData.description or metadata.description | escape }}" />
     <meta property="og:image" content="{{ imageUrl | escape }}" />
-    <meta property="og:type" content="{{ ogType or "website" | escape }}" />
+    {% if ogType == 'article' %}
+    <meta property="og:type" content="article" />
+    <meta property="og:article:author" content="https://guahanweb.com" />
+    <meta property="og:article:publisher" content="https://guahanweb.com" />
+    <meta property="og:article:published_time" content="{{ date | ogdate }}" />
+    <meta property="site_name" content="Guahan Web" />
+    {% else %}
+    <meta property="og:type" content="website" />
+    {% endif %}
 
     <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">

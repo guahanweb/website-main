@@ -1,7 +1,7 @@
 ---
 title: "The Power of Narrative: Communicating and Connecting in the Digital Age"
 description: As technology grows ever more rapidly, the importance of identifying your central story becomes even more important
-date: 2023-12-18
+date: 2023-12-18 08:00:00
 tags:
   - storytelling
   - innovation

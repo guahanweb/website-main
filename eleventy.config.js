@@ -89,6 +89,21 @@ module.exports = function(eleventyConfig) {
     return post.templateContent;
   }
 
+  // Custom filter to format Open Graph dates
+  eleventyConfig.addFilter("ogdate", (dt) => {
+    const year = dt.getUTCFullYear().toString();
+    const month = (dt.getUTCMonth() + 1).toString().padStart(2, '0');
+    const day = dt.getUTCDate().toString().padStart(2, '0');
+    const hour = dt.getUTCHours().toString().padStart(2, '0');
+    const min = dt.getUTCMinutes().toString().padStart(2, '0');
+    const offset = dt.getTimezoneOffset() / 60;
+
+    let output = [year, month, day].join('-') + 'T' + [hour, min].join(':');
+    output += ('-' + offset.toString().padStart(2, '0') + ':00');
+
+    return output;
+  });
+
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
     html: true,
