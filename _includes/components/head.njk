@@ -1,6 +1,7 @@
     {# Standard title & description tags #}
     <title>{{ title or renderData.title or metadata.title | escape }}</title>
     <meta name="description" content="{{ description or renderData.description or metadata.description | escape }}">
+    <meta name="author" content="Garth Henson" />
 
     {# This section is specifically for SEO #}
     <link rel="canonical" href="{{ page.url | escape }}" />
@@ -17,7 +18,7 @@
     <meta name="robots" content="{{ robots | join(", ") }}" />
 
     {# This section is for share cards #}
-    {% set imageUrl = "/img/project-card-beach.jpg" %}
+    {% set imageUrl = "" %}
     {% if hero and hero.img %}
         {% set imageUrl = renderData.hero.img %}
     {% elif renderData.image %}
@@ -28,13 +29,14 @@
     <meta property="og:title" content="{{ title or renderData.title or metadata.title | escape }}" />
     <meta property="og:url" content="{{ page.url | escape }}" />
     <meta property="og:description" content="{{ description or renderData.description or metadata.description | escape }}" />
-    <meta property="og:image" content="{{ imageUrl | escape }}" />
+    <meta property="og:image" content="{{ page.images | ogimage(hero) }}" />
+    <meta property="og:author" content="Garth Henson" />
+    <meta property="site_name" content="Guahan Web" />
     {% if ogType == 'article' %}
     <meta property="og:type" content="article" />
     <meta property="og:article:author" content="https://guahanweb.com" />
     <meta property="og:article:publisher" content="https://guahanweb.com" />
-    <meta property="og:article:published_time" content="{{ date | ogdate }}" />
-    <meta property="site_name" content="Guahan Web" />
+    <meta property="og:publish_date" content="{{ date | ogdate }}" />
     {% else %}
     <meta property="og:type" content="website" />
     {% endif %}

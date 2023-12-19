@@ -66,7 +66,28 @@ module.exports = function(eleventyConfig) {
         src="${ metadata[sizeIndex].webp[0].url }"
 <\/picture>`
 
+        this.page.images = resizedList;
         return imageHTML;
+    });
+
+    eleventyConfig.addFilter('ogimage', async (images, hero) => {
+        const DEFAULT_URL = "/img/project-card-beach.jpg";
+
+        // short circuit with defalut
+        if (!images) return DEFAULT_URL;
+
+        const imageUrls = Object.keys(images);
+        if (!imageUrls.length) return DEFAULT_URL;
+
+        let selectionIndex = 0;
+        if (hero && hero.img) {
+            selectionIndex = imageUrls.indexOf(hero.img);
+            if (selectionIndex < 0) selectionIndex = 0;
+        }
+
+        // explicitly grab the original image
+        const image = images[imageUrls[selectionIndex]];
+        return image[2].jpeg[0].url;
     });
 };
 

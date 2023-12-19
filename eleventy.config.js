@@ -8,9 +8,6 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 
-const eleventyWebcPlugin = require("@11ty/eleventy-plugin-webc");
-const Image = require("@11ty/eleventy-img");
-
 const eleventyImageConfig = require('./eleventy.image.config');
 
 module.exports = function(eleventyConfig) {
