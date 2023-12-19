@@ -1,0 +1,39 @@
+    {# Standard title & description tags #}
+    <title>{{ title or renderData.title or metadata.title | escape }}</title>
+    <meta name="description" content="{{ description or renderData.description or metadata.description | escape }}">
+
+    {# This section is specifically for SEO #}
+    <link rel="canonical" href="{{ page.url | escape }}" />
+
+    {% set robotsIndex = "index" %}
+    {% set robotsFollow = "follow" %}
+    {% if renderData.noindex or metadata.noindex %}
+        {% set robotsIndex = "noindex" %}
+    {% endif %}
+    {% if renderData.nofollow or metadata.nofollow %}
+        {% set robotsFollow = "nofollow" %}
+    {% endif %}
+    {% set robots = [robotsIndex, robotsFollow] %}
+    <meta name="robots" content="{{ robots | join(", ") }}" />
+
+    {# This section is for share cards #}
+    {% set imageUrl = "/img/project-card-beach.jpg" %}
+    {% if renderData.hero and renderData.hero.img %}
+        {% set imageUrl = renderData.hero.img %}
+    {% elif renderData.image %}
+        {% set imageUrl = renderData.image %}
+    {% elif metadata.image %}
+        {% set imageUrl = metadata.image %}
+    {% endif %}
+    <meta property="og:title" content="{{ title or renderData.title or metadata.title | escape }}" />
+    <meta property="og:url" content="{{ page.url | escape }}" />
+    <meta property="og:description" content="{{ description or renderData.description or metadata.description | escape }}" />
+    <meta property="og:image" content="{{ imageUrl | escape }}" />
+    <meta property="og:type" content="{{ ogType or "website" | escape }}" />
+
+    <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/prism-diff.css' | url }}">
+    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
