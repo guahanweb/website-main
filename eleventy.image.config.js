@@ -7,7 +7,7 @@ const Sharp = require("sharp");
 
 const IMG_THUMB_WIDTH = 240;
 const IMG_HERO_WIDTH = 920;
-const IMG_HERO_HEIGHT = Math.round(IMG_HERO_WIDTH / 19 * 6);
+const IMG_HERO_HEIGHT = Math.round(IMG_HERO_WIDTH / 16 * 9);
 const IMG_DEFAULT_WIDTH = 1200;
 
 module.exports = function(eleventyConfig) {
