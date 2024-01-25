@@ -7,7 +7,7 @@ export PROJECT_ROOT=$( dirname "${DIR}" )
 export OUTPUT_DIR=${OUTPUT_DIR:-_site}
 export PUBLISH_USERNAME=${PUBLISH_USERNAME:-guahan}
 export PUBLISH_DOMAIN=${PUBLISH_DOMAIN:-guahanweb.com}
-export PUBLISH_SERVER_PATH=${PUBLISH_SERVER_PATH:-"/home/guahan/guahanweb.com/"}
+export PUBLISH_SERVER_PATH=${PUBLISH_SERVER_PATH:-"/home/guahan/guahanweb.com"}
 
 function clean_build() {
     cd ${PROJECT_ROOT}
@@ -17,8 +17,7 @@ function clean_build() {
 
 function publish() {
     cd ${PROJECT_ROOT}
-    cd ${OUTPUT_DIR}
-    scp -r ./* ${PUBLISH_USERNAME}@${PUBLISH_DOMAIN}:${PUBLISH_SERVER_PATH}
+    rsync -ahP ${OUTPUT_DIR}/ ${PUBLISH_USERNAME}@${PUBLISH_DOMAIN}:${PUBLISH_SERVER_PATH}
 }
 
 echo "building a fresh copy..."

@@ -3,7 +3,7 @@
   "version": "7.0.0",
   "description": "Base website for guahanweb.com",
   "scripts": {
-    "build": "npx @11ty/eleventy",
+    "build": "npx @11ty/eleventy && npx sass sass:_site/css",
     "bench": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
     "clean": "rm -rf ./_site",
     "watch": "npx @11ty/eleventy --watch",
