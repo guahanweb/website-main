@@ -5,10 +5,10 @@ const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 
 const eleventyImageConfig = require('./eleventy.image.config');
+const pluginSyntaxHighlight = require('./plugins/syntax-highlight');
 
 module.exports = function(eleventyConfig) {
   // Copy the `img` and `css` folders to the output
