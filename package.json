@@ -38,6 +38,7 @@
     "htmlencode": "0.0.4",
     "markdown-it": "14.0.0",
     "prismjs": "1.29.0",
+    "mermaid": "^10.8.0",
     "sass": "^1.54.9",
     "sharp": "^0.33.1"
   }

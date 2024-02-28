@@ -13,6 +13,7 @@ const pluginSyntaxHighlight = require('./plugins/syntax-highlight');
 module.exports = function(eleventyConfig) {
   // Copy the `img` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("img");
+  eleventyConfig.addPassthroughCopy({ "node_modules/mermaid/dist": "js/lib/mermaid" });
   // eleventyConfig.addPassthroughCopy("css");
 
   // Image configuration
@@ -20,8 +21,19 @@ module.exports = function(eleventyConfig) {
 
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
+
+  // additional configuration for mermaid
+  eleventyConfig.addPlugin(pluginSyntaxHighlight);
+
+  const highlighter = eleventyConfig.markdownHighlighter;
+  eleventyConfig.addMarkdownHighlighter((str, language) => {
+    console.log('lang:', language);
+    if (language === "mermaid") {
+      return `<pre class="mermaid">${str}</pre>;`
+    }
+    return highlighter(str, language);
+  });
 
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy");
