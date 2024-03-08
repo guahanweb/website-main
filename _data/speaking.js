@@ -14,7 +14,7 @@ const talks = {
     cs101: {
         name: 'Engineering Student Tech Talk',
         description: 'A high level career discussion giving insight into tech evaluation, networking, interviewing, and finding that first job',
-        tags: ['mentoring', 'tech talk', 'career'],
+        tags: ['mentorship', 'tech talk', 'career'],
         sort: 7,
     },
     serverless101: {
@@ -40,18 +40,32 @@ const talks = {
         description: 'Enterprise data moves at the speed of light, so let\'s explore how to analyze and evaluate that data as it happens',
         tags: ['js', 'data', 'architecture'],
         sort: 3,
+        deprecated: true,
     },
     tellingstories: {
         name: 'Telling Stories With Big Data',
         description: 'Access to massive volumes of data is at our fingertips, but it isn\'t always clear how to tell a story that is both accurate and relevant with it',
         tags: ['data', 'architecture'],
         sort: 3,
+        deprecated: true,
     },
     apigating: {
         name: 'Gating Your APIs Without Lifting a Server',
         description: 'When building APIs, security cannot be an afterthought. Let\'s examine a technique to gate endpoints with configurable OAuth using serverless methodologies.',
         tags: ['security', 'apis', 'architecture'],
         sort: 1
+    },
+    domainrouting: {
+        name: 'Dynamic Domain-Driven UI: Crafting Seamless Multi-Tenant Experiences',
+        description: 'Uncover the secrets of dynamic multi-tenant web experiences, adapting UI based on domain names. Learn to transform a single origin server using NGINX and web technologies for a unique look and feel per domain. From customized email preferences to region-specific legal content, seamlessly integrate tailored solutions into your web product without added infrastructure complexity.',
+        tags: ['routing', 'multi-tenant', 'architecture'],
+        sort: 1,
+    },
+    career: {
+        name: 'Tech Career Insights: Navigating Growth for Students and Early-Career Professionals',
+        description: 'Discover key insights and strategies for personal and professional growth tailored for students and early-career professionals in the tech industry. This session offers a dynamic blend of career mentoring and interactive Q&A, providing valuable guidance to navigate the evolving tech landscape and build a successful and fulfilling career path.',
+        tags: ['career', 'mentorship'],
+        sort: 0,
     }
 };
 
@@ -189,6 +203,13 @@ const eventList = [
         location: 'New York, NY',
         date: '2023-09-25',
         talks: [talks.emailtesting, talks.apigating]
+    },
+    {
+        name: 'All Things Open 2023',
+        url: 'https://2023.allthingsopen.org',
+        location: 'Raleigh, NC',
+        date: '2023-10-16',
+        talks: [talks.apigating]
     }
 ];
 
